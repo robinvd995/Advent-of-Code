@@ -140,9 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="aoc_proj.cpp" />
+    <ClCompile Include="PasswordEntry.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input_1_1.txt" />
+    <Text Include="input_2.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PasswordEntry.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -18,10 +18,21 @@
     <ClCompile Include="aoc_proj.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PasswordEntry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input_1_1.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="input_2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PasswordEntry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
