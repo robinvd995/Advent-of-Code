@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "PasswordEntry.h"
+#include "TreeMap.h"
 
 int assignmnt0() {
 	std::ifstream input("input_1_1.txt");
@@ -95,11 +96,53 @@ int assignmnt3() {
 	return i;
 }
 
+unsigned int slope(TreeMap& map, int dx, int dy) {
+	int pos[] = { 0,0 };
+	int treeAmount = 0;
+	while (pos[1] < map.getHeight()) {
+		treeAmount += map.isTree(pos[0], pos[1]);
+
+		pos[0] += dx;
+		pos[1] += dy;
+	}
+
+	return treeAmount;
+}
+
+int assignmnt4(){
+	std::ifstream input("input_3.txt");
+	std::string line;
+	
+	TreeMap map;
+
+	while (std::getline(input, line)) {
+		map.addLine(line);
+	}
+	map.finalize();
+
+	return slope(map, 3, 1);
+}
+
+unsigned int assignmnt5() {
+	std::ifstream input("input_3.txt");
+	std::string line;
+
+	TreeMap map;
+
+	while (std::getline(input, line)) {
+		map.addLine(line);
+	}
+	map.finalize();
+
+	return slope(map, 1, 1) * slope(map, 3, 1) * slope(map, 5, 1) * slope(map, 7, 1) * slope(map, 1, 2);
+}
+
 int main()
 {
 	std::cout << "Assignment0: " << assignmnt0() << std::endl;
 	std::cout << "Assignment1: " << assignmnt1() << std::endl;
 	std::cout << "Assignment2: " << assignmnt2() << std::endl;
 	std::cout << "Assignment3: " << assignmnt3() << std::endl;
+	std::cout << "Assignment4: " << assignmnt4() << std::endl;
+	std::cout << "Assignment5: " << assignmnt5() << std::endl;
 }
-

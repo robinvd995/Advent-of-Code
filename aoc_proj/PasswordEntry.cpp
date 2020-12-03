@@ -28,5 +28,6 @@ void PasswordEntry::decode(std::string entry) {
 	m_Min = std::stoi(entry.substr(0, indices[0]));
 	m_Max = std::stoi(entry.substr(indices[0] + 1, indices[1] - indices[0]));
 	m_Char = entry[indices[2] - 1];
-	m_Password = entry.substr(indices[2] + 1);
+	m_Password = entry.substr(indices[2] + 2);
+	;
 }
