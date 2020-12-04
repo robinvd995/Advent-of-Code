@@ -5,9 +5,10 @@
 
 #include "PasswordEntry.h"
 #include "TreeMap.h"
+#include "Passport.h"
 
 int assignmnt0() {
-	std::ifstream input("input_1_1.txt");
+	std::ifstream input("input_1.txt");
 	std::string line;
 
 	std::vector<int> collection;
@@ -17,25 +18,19 @@ int assignmnt0() {
 		collection.push_back(val);
 	}
 
-	int index = 0;
-	for (int i = index; i < collection.size(); i++) {
+	for (int i = 0; i < collection.size() - 1; i++) {
+		for (int j = i + 1; j < collection.size(); j++) {
 
-		int val0 = collection[i];
-		for (int j = index; j < collection.size(); j++) {
-			if (i == j) continue;
-
-			int val1 = collection[j];
-
-			if ((val0 + val1) == 2020) {
-				return (val0 * val1);
+			if ((collection[i] + collection[j]) == 2020) {
+				return (collection[i] * collection[j]);
 			}
 		}
-		index++;
 	}
 }
 
+// Sucks ass
 int assignmnt1() {
-	std::ifstream input("input_1_1.txt");
+	std::ifstream input("input_1.txt");
 	std::string line;
 
 	std::vector<int> collection;
@@ -45,23 +40,15 @@ int assignmnt1() {
 		collection.push_back(val);
 	}
 
-	int index = 0;
-	for (int i = index; i < collection.size(); i++) {
+	for (int i = 0; i < collection.size() - 2; i++) {
+		for (int j = i + 1; j < collection.size() - 1; j++) {
+			for (int k = j + 2; k < collection.size(); k++) {
 
-		int val0 = collection[i];
-		for (int j = index + 1; j < collection.size(); j++) {
-
-			int val1 = collection[j];
-			for (int k = index + 2; k < collection.size(); k++) {
-
-				int val2 = collection[k];
-
-				if ((val0 + val1 + val2) == 2020) {
-					return (val0 * val1 * val2);
+				if ((collection[i] + collection[j] + collection[k]) == 2020) {
+					return (collection[i] * collection[j] * collection[k]);
 				}
 			}
 		}
-		index++;
 	}
 
 }
@@ -137,12 +124,55 @@ unsigned int assignmnt5() {
 	return slope(map, 1, 1) * slope(map, 3, 1) * slope(map, 5, 1) * slope(map, 7, 1) * slope(map, 1, 2);
 }
 
+int assignmnt6() {
+	std::ifstream input("input_4.txt");
+	std::string line;
+
+	Passport::initializeComparableMap();
+
+	int i = 0;
+	Passport curPassport;
+
+	while (std::getline(input, line)) {
+		if (line.length() == 0) i += curPassport.validate0();
+		curPassport.addLine(line);
+	}
+
+	return i;
+}
+
+int assignmnt7() {
+	std::ifstream input("input_4.txt");
+	std::string line;
+
+	Passport::initializeComparableMap();
+
+	int i = 0;
+	Passport curPassport;
+
+	while (std::getline(input, line)) {
+		if (line.length() == 0) i += curPassport.validate1();
+		curPassport.addLine(line);
+	}
+
+	return i;
+}
+
 int main()
 {
+	// Day 1
 	std::cout << "Assignment0: " << assignmnt0() << std::endl;
 	std::cout << "Assignment1: " << assignmnt1() << std::endl;
+
+	// Day 2
 	std::cout << "Assignment2: " << assignmnt2() << std::endl;
 	std::cout << "Assignment3: " << assignmnt3() << std::endl;
+
+	// Day 3
 	std::cout << "Assignment4: " << assignmnt4() << std::endl;
 	std::cout << "Assignment5: " << assignmnt5() << std::endl;
+
+	// Day 4
+	std::cout << "Assignment6: " << assignmnt6() << std::endl;
+	std::cout << "Assignment7: " << assignmnt7() << std::endl;
 }
