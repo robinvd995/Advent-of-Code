@@ -44,7 +44,7 @@ int assignmnt1() {
 
 	for (int i = 0; i < collection.size() - 2; i++) {
 		for (int j = i + 1; j < collection.size() - 1; j++) {
-			for (int k = j + 2; k < collection.size(); k++) {
+			for (int k = j + 1; k < collection.size(); k++) {
 
 				if ((collection[i] + collection[j] + collection[k]) == 2020) {
 					return (collection[i] * collection[j] * collection[k]);
@@ -197,8 +197,7 @@ int assignmnt9() {
 	std::sort(takenSeats.begin(), takenSeats.end());
 	for(int i = 0; i < takenSeats.size() - 1; i++) {
 		int seatId = takenSeats[i];
-		int nextSeatId = takenSeats[i + 1];
-		if (seatId + 2 == nextSeatId) return seatId + 1;
+		if (seatId + 2 == takenSeats[i + 1]) return seatId + 1;
 	}
 
 	return highestSeatId;

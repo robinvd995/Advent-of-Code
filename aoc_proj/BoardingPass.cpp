@@ -3,13 +3,11 @@
 #include <math.h>
 
 int BoardingPass::getCol() {
-	std::string s = m_Data.substr(7, 3);
-	return decode(s, 'R');
+	return decode(m_Data.substr(7, 3), 'R');
 }
 
 int BoardingPass::getRow() {
-	std::string s = m_Data.substr(0, 7);
-	return decode(s, 'B');
+	return decode(m_Data.substr(0, 7), 'B');
 }
 
 int BoardingPass::decode(std::string data, char bt) {
@@ -17,8 +15,7 @@ int BoardingPass::decode(std::string data, char bt) {
 
 	int val = 0;
 	for (int i = 0; i < size; i++) {
-		int powr = powl(2, (int)(size - i - 1));
-		val += powr * (bt == data[i]);
+		val += pow(2, (size - i - 1)) * (bt == data[i]);
 	}
 
 	return val;
