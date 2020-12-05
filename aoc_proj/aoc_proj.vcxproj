@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="aoc_proj.cpp" />
+    <ClCompile Include="BoardingPass.cpp" />
     <ClCompile Include="Passport.cpp" />
     <ClCompile Include="PasswordEntry.cpp" />
     <ClCompile Include="TreeMap.cpp" />
@@ -149,8 +150,10 @@
     <Text Include="input_3.txt" />
     <Text Include="input_1.txt" />
     <Text Include="input_2.txt" />
+    <Text Include="input_5.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BoardingPass.h" />
     <ClInclude Include="Passport.h" />
     <ClInclude Include="PasswordEntry.h" />
     <ClInclude Include="TreeMap.h" />

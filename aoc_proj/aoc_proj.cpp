@@ -2,10 +2,12 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 
 #include "PasswordEntry.h"
 #include "TreeMap.h"
 #include "Passport.h"
+#include "BoardingPass.h"
 
 int assignmnt0() {
 	std::ifstream input("input_1.txt");
@@ -158,6 +160,50 @@ int assignmnt7() {
 	return i;
 }
 
+int assignmnt8() {
+
+	std::ifstream input("input_5.txt");
+	std::string line;
+
+	int highestSeatId = -1;
+
+	while (std::getline(input, line)) {
+		BoardingPass pass(line);
+		int col = pass.getCol();
+		int row = pass.getRow();
+		int seatId = (row * 8) + col;
+		highestSeatId = seatId > highestSeatId ? seatId : highestSeatId;
+	}
+	return highestSeatId;
+}
+
+int assignmnt9() {
+	std::ifstream input("input_5.txt");
+	std::string line;
+
+	std::vector<int> takenSeats;
+
+	int highestSeatId = -1;
+
+	while (std::getline(input, line)) {
+		BoardingPass pass(line);
+		int col = pass.getCol();
+		int row = pass.getRow();
+		int seatId = (row * 8) + col;
+		takenSeats.push_back(seatId);
+		highestSeatId = seatId > highestSeatId ? seatId : highestSeatId;
+	}
+
+	std::sort(takenSeats.begin(), takenSeats.end());
+	for(int i = 0; i < takenSeats.size() - 1; i++) {
+		int seatId = takenSeats[i];
+		int nextSeatId = takenSeats[i + 1];
+		if (seatId + 2 == nextSeatId) return seatId + 1;
+	}
+
+	return highestSeatId;
+}
+
 int main()
 {
 	// Day 1
@@ -175,4 +221,8 @@ int main()
 	// Day 4
 	std::cout << "Assignment6: " << assignmnt6() << std::endl;
 	std::cout << "Assignment7: " << assignmnt7() << std::endl;
+
+	// Day 5
+	std::cout << "Assignment8: " << assignmnt8() << std::endl;
+	std::cout << "Assignment9: " << assignmnt9() << std::endl;
 }
